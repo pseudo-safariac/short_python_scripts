@@ -1,0 +1,2 @@
+from tests import test_bmi_calculator
+from bmi_calculator import bmi_calculation
