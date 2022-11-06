@@ -1,7 +1,8 @@
-height: float | int = int(input('Enter your height in cm:\n'))
-weight: float | int = int(input('Enter weight in kg:\n'))
+"""	This is a short program that calculates the BMI of a usesr and returns back a string that says if the user is of normal weight, underweight, obese etc.
+	Designed for use with the CLI. 
+	"""
 
-def bmi_calculation(height : float, weight : float)-> str | None:
+def bmi_calculation(height : float | int, weight : float | int)-> str | None:
 	"""_Summary_
 	The function receives a user's height and weight, then computes the BMI according to the formula suggested by the CDC.
 	
@@ -24,6 +25,10 @@ def bmi_calculation(height : float, weight : float)-> str | None:
 	elif bmi >= 25 and bmi <= 29.9:
 		return str('You are overweight')
 	elif bmi >= 30:
-		return str('You are Obese.')
+		return str('You are Obese')
 
-print(bmi_calculation(height, weight))
+
+if __name__ == '__main__':
+	height: float | int = float(input('Enter your height in cm:\n'))
+	weight: float | int = float(input('Enter weight in kg:\n'))
+	print(f"\n{'*'*40}\n\t{bmi_calculation(height, weight)}\n{'*'*40}")
