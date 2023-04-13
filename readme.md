@@ -32,11 +32,11 @@ bmi_calculation(height : float | int, weight : float | int) -> str | None
 ```
 The function returns a string that has information on the BMI of the user.
 An example of use is given below;
-```console
-$ py bmi_calculator.py
-Enter your height in cm:
+```python
+>>> bmi_calculator.py
+>>> Enter your height in cm:
 163
-Enter weight in kg:
+>>> Enter weight in kg:
 62.5
 
 ****************************************

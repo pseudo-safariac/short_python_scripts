@@ -3,6 +3,7 @@ import tkinter.ttk as ttk
 from tkinter import messagebox
 import traceback
 
+
 """The program is built as an example of how tkinter can handle exceptions and how the traceback can be displayed without causing the GUI to exit its mainloop.
 	Any exception can then be safely handled and more information can be collected for use especially with Product Designers."""
 
@@ -14,7 +15,7 @@ class ErrorClass(tk.Toplevel):
 		tk.Toplevel.__init__(self)
 		# General App parameters
 		self.geometry('350x75')
-		self.attributes('-toolwindow', True)
+		self.attributes('-type', tk.constants.WINDOW_TOOL)
 		self.minsize(height=HEIGHT, width=WIDTH)
 		self.resizable(width=True, height=False)
 		self.title(title)
@@ -98,14 +99,16 @@ def center(self):
 		return self.geometry(f'{WIDTH}x{HEIGHT}+{center_x}+{center_y}')
 		
 
-if __name__ == "__main__":
+if __name__ == '__main__':
 	try:
-		from ctypes import windll
+		from ctypes import windll  # import windows exclusive module
 		windll.shcore.SetProcessDpiAwareness(1)
-	except ImportError as e:
-		messagebox.showerror(title='Module Not Found', message=f'module {e} not found. Your Program may seem Out of Focus')
-	finally:
-		app: App = App()
+	except ImportError:
+		messagebox.showerror(title='Module Not Found', message=f'Your Program may seem Out of Focus if you are using Windows')
+
+	app: App = App()
+	try:
 		app.mainloop()
-		
-		"""0328 - born on 31/10/2022, male"""
+	except tk.TclError as e:
+		# Error when attempting to access widgets when there are none
+		print(f"Error : {e}")
